@@ -19,9 +19,29 @@ class SPHAssignmentTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testGetCalculateTotalData() {
+        let q1 = Quarter(quarter: "Q1", dataUsage: 2.3)
+        let q2 = Quarter(quarter: "Q2", dataUsage: 2.2)
+        let q3 = Quarter(quarter: "Q4", dataUsage: 2.2)
+        let q4 = Quarter(quarter: "Q3", dataUsage: 2.3)
+        
+        let quarters2008 = [q1, q2, q3, q4]
+        
+        let year2008 = Year(year: "2008", quarters: quarters2008);
+        XCTAssert(year2008.getCalculatedTotlaData() == 9.0)
+    }
+    
+    func testHasDataVolumeReduced() {
+        let q1 = Quarter(quarter: "Q1", dataUsage: 2.3)
+        let q2 = Quarter(quarter: "Q2", dataUsage: 2.2)
+        let q3 = Quarter(quarter: "Q4", dataUsage: 2.2)
+        let q4 = Quarter(quarter: "Q3", dataUsage: 2.3)
+        
+        let quarters2008 = [q1, q2, q3, q4]
+        
+        let year2008 = Year(year: "2008", quarters: quarters2008);
+        
+        XCTAssert(year2008.hasDataVolumeReduced())
     }
 
     func testPerformanceExample() {
